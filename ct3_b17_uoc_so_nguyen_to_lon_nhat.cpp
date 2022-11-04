@@ -1,42 +1,39 @@
+//co ve chua dung lam :)) 
+
+
 #include<stdio.h>
 #include<math.h>
 
-int songuyento(int a)
+int ucln(long long x)
 {
-    if(a<2)
+    int res ;
+    for(int i=2 ; i<=sqrt(x) ; i++)
     {
-        return 0;
-    }
-    for(int i=2 ; i<=sqrt(a) ; i++)
-    {
-        if(a%i==0)
+        if(x%i==0)
         {
-            return 0 ;
+            res = i;
+            while(x%i==0)
+            {
+                x/=i;
+            }
         }
     }
-    return 1;
-}
-
-int ucln(int x)
-{
-    int z ;
-    for(int j=x-1 ; j>=1 ; j--)
+    if(x > 1)
     {
-        if(songuyento(j)==1)
-        {
-            z=j;
-        }
+        res=x;
     }
+    return res;
 }
 
 int main()
 {
     int n;
     scanf("%d", &n);
-    for(int i=1 ; i<=n ; i++ )
+    for(int i=0 ; i<n ; i++)
     {
         long long x;
         scanf("%lld", &x);
         printf("%d\n", ucln(x));
     }
+    return 0;
 }

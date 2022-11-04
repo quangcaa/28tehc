@@ -1,29 +1,24 @@
-#include<iostream>
-#include<iomanip>
+#include<stdio.h>
 
-using namespace std;
+
+long long findfibo(int n)
+{
+    if(n==0 || n==1)
+    {
+        return n ;
+    }
+    long long fn1 = 1 , fn2 = 0 ;
+    long long fn ;
+    for(int i=2 ; i<=n ; i++)
+    {
+        fn = fn1 + fn2 ;
+        fn2 = fn1 ;
+        fn1 = fn ;
+    }
+    return fn ;
+}
 
 int main()
 {
-    int tong_so_tim_dc =0 ; 
-    int i=10000;
-    for(i; i<=99999 ; i++)
-    {
-        int n=i;
-        int haisd=0;
-        int haisc=0;
-        haisc += i%10;
-        i/=10;
-        haisc += i%10;
-        i/=100;
-        haisd += i%10;
-        i/=10;
-        haisd += i%10;
-        if(haisd == haisc)
-            cout << n << endl;
-            tong_so_tim_dc ++ ;
-        
-    }
-    cout << tong_so_tim_dc ;
-    return 0;
+    printf("%lld", findfibo(92));
 }

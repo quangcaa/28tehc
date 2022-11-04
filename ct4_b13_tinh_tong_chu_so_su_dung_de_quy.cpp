@@ -5,9 +5,9 @@
 
 int tongcs(ll n)
 {
-    if(n==0)
+    if(n<10)
     {
-        return 0 ;
+        return n ;
     }
     return n%10 + tongcs(n/10) ;
 }
