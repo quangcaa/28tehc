@@ -1,20 +1,24 @@
-#include<stdio.h>
+#include<iostream>
+#include<iomanip>
 #include<math.h>
 
-#define ll long long
+using namespace std;
 
-int tongcs(ll n)
-{
-    if(n==0)
-    {
-        return 0 ;
-    }
-    return n%10 + tongcs(n/10) ;
-}
+int a[101] ;
 
 int main()
 {
-    ll n ;
-    scanf("%lld", &n) ;
-    printf("%d", tongcs(n)) ;
+    int n ;
+    cin >> n;
+    for(int i=0 ; i<n ; i++)
+    {
+        cin >> a[i];
+    }
+    int sem = 0 ;
+    for(int i=0 ; i<n ; i++)
+    {
+        sem += a[i] ;
+    }
+    cout << fixed << setprecision(2) << (double)sem/n ;
+    return 0;
 }

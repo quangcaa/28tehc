@@ -14,7 +14,14 @@ int main()
     int nho = 0 , lon = 0 ;
     for(int i=0 ; i<n ; i++)
     {
-        
+        if(a[i] < X)
+        {
+            nho++ ;
+        }
+        else if(a[i] > X)
+        {
+            lon++ ;
+        }
     }
-
+    printf("%d\n%d", nho , lon ) ;
 }
