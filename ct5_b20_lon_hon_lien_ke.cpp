@@ -11,18 +11,14 @@ int main()
     {
         scanf("%d", &a[i]) ;
     }
-    int k ; 
-    scanf("%d", &k) ;
-    int dem = 0 ;
-    for(int i=0 ; i<n-1 ; i++)
+    for(int i=0 ; i<n ; i++)
     {
-        for(int j=i+1 ; j<n ; j++)
+        if(i>0 && i<n-1)
         {
-            if(a[i]+a[j]==k)
+            if(a[i]>a[i-1] && a[i]>a[i+1])
             {
-                dem++ ;
+                printf("%d ", a[i]) ;
             }
         }
     }
-    printf("%d", dem) ;
 }
