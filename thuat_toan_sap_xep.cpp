@@ -99,3 +99,122 @@ void countingSort(int a[] , int n)
     }
 }
 
+
+//SAP XEP NHANH : Quick sort
+//do phuc tap : O(NlogN)
+//HAM PHAN HOACH LOMUTO : tra ve chi so cua khoa (pivot)
+int partition(int a[] , int l , int r)
+{
+    int i = l-1 , pivot = a[r] ;
+    for(int j=l ; j<r ; j++)
+    {
+        //neu a[j] > pivot : bo qua
+        if(a[j] <= pivot)
+        {
+            //dua a[j] len dau
+            ++i;
+            int tmp = a[i] ; a[i] = a[j] ; a[j] = tmp ;
+        }
+    }
+    ++i;
+    int tmp = a[i] ; a[i] = a[r] ; a[r] = tmp ;
+    return i ;
+}
+
+void quickSort(int a[] , int l , int r)
+{
+    if(l<r)
+    {
+        int pos = partition(a,l,r);
+        //xet de quy ve day ben trai
+        quickSort(a , l , pos-1) ;
+        quickSort(a, pos+1 , r) ;
+
+    }
+}
+
+int main()
+{
+    int n ; scanf("%d", &n) ;
+    for(int i=0 ; i<n ; i++)
+    {
+        scanf("%d", &a[i]) ;
+    }
+    quickSort(a, 0 , n-1) ;
+    for(int i=0 ; i<n ; i++)
+    {
+        printf("%d ", &a[i]) ;
+    }
+}
+
+
+
+//SAP XEP TRON : Merge sort
+//Do phuc tap : O(NlogN) 
+
+//merge : tron cac ptu tu chi so left -> mid va cac ptu mid+1 -> right 
+// thanh cac ptu tang dan
+
+void merge(int a[] , int l , int m , int r)
+{
+    //tam thoi luu cac ptu chi so l -> m vao 1 mang && cac ptu chi so m+1 -> r vao 1 mang
+    int n1 = m-l+1 , n2 = r-m ;
+    int x[10000] , y[10000] ; // thuc ra la int x[n1] , y[n2]  (( nhung vsc bi danh loi nen vt ntn))
+    //dua cac ptu tu chi so l->m vao mang x 
+    for(int i=0 ; i<n1 ; i++)
+    {
+        x[i] = a[l+i] ;
+    }
+    //dua cac ptu tu chi so m+1->r vao mang y
+    for(int i=0 ; i<n2 ; i++)
+    {
+        y[i] = a[m+i+1] ;
+    }
+    //tron 2 mang x , y -> gan lai cho mang a[l , r] 
+    int index = l ;
+    int i=0 , j=0 ;
+    while(i<n1 && j<n2)
+    {
+        if(x[i] <= y[j])
+        {
+            a[index++] = x[i++] ;
+        }
+        else
+        {
+            a[index++] = y[j++] ;
+        }
+    }
+    while(i<n1)
+    {
+        a[index++] = x[i++] ;
+    }
+    while(j<n2)
+    {
+        a[index++] = y[j++] ;
+    }
+}
+
+void mergeSort(int a[] , int l , int r)
+{
+    if(l<r)
+    {
+        int m = (l+r)/2 ;
+        mergeSort(a,l,m) ; // goi dequy nua trai
+        mergeSort(a,m+1,r) ; // goi dequy nua phai
+        merge(a, l , m , r) ;
+    }
+}
+
+int main()
+{
+    int n ; scanf("%d", &n) ;
+    for(int i=0 ; i<n ; i++)
+    {
+        scanf("%d", &a[i]) ;
+    }
+    mergeSort(a, 0 , n-1) ;
+    for(int i=0 ; i<n ; i++)
+    {
+        printf("%d ", a[i]) ;
+    }
+}

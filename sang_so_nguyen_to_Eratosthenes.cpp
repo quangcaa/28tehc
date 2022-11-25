@@ -18,7 +18,7 @@ void sang()
     for(int i=2 ; i<=sqrt(n) ; i++ )
     {
         //neu i la so nguyen to => loai bo cac boi cua i<=n
-        if(prime[i] = 1)
+        if(prime[i] == 1)
         {
             //duyet cac boi cua i : i * i 
             for(int j=i*i ; j<=n ; j+=i)
