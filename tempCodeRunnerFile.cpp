@@ -1,38 +1,26 @@
-#include<stdio.h>
-#include<math.h>
+    #include<iostream>
+    #include<iomanip>
+    using namespace std ;
 
-int prime[1000001] ;
-
-void sang()
-{
-    for(int i=0 ; i<1000000 ; i++)
+    double dq(int n)
     {
-        prime[i] = 1 ;
-    }
-    prime[0] = prime[1] = 0 ;
-    for(int i=2 ; i<=sqrt(1000000) ; i++)
-    {
-        if(prime[i])
+        if(n==1)
         {
-            for(int j=i*i ; j<=1000000 ; j+=i)
-            {
-                prime[j] = 0 ;
-            } 
+            return 1 ;
+        }
+        else
+        {
+            return  1.0/n+dq(n-1) ;
         }
     }
-}
 
-int main()
-{
-    long long n ; scanf("%lld", &n) ;
-    sang() ;
-    int dem = 0 ;
-    for(int i=1 ; i<=sqrt(n) ; i++)
+    int main()
     {
-        if(prime[i])
+        int n ; cin >> n ;
+        double sum = 0.0 ;
+        for(int i=1 ; i<=n ; i++)
         {
-            dem++ ;
+            sum += dq(i) ;
         }
+        cout << fixed << setprecision(2) << sum ;
     }
-    printf("%d", dem) ;
-}

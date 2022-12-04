@@ -1,18 +1,14 @@
-    #include<iostream>
-    #include<iomanip>
-    using namespace std ;
+#include<string>
+#include<iostream>
+#include<fstream>
 
-    double dq(int n)
-    {
-        if(n==0 || n==1)
-        {
-            return n ;
-        }
-        return dq(n-1) + dq(n-2) ;
-    }
+using namespace std ;
 
-    int main()
-    {
-        int n ; cin >> n ;
-        cout << dq(n) ;
-    }
+int main()
+{
+    string s ; cin >> s ;
+    ifstream file(s) ;
+    string k ;
+    file >> k ;
+    cout << k ;
+}
