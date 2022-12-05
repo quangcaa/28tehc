@@ -38,7 +38,7 @@ int binarySearch(int a[] , int n , int x)
         }
         else
         {
-            right = mid + 1 ;
+            right = mid - 1 ;
         }
     }
     return 0 ;
